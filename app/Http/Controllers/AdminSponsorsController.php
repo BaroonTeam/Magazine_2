@@ -100,6 +100,10 @@ class AdminSponsorsController extends Controller
             $logo_name = time() . $file->getClientOriginalName();
             //Moving image to images folder and saving in database
             $file->move('images', $logo_name);
+            //deleting old file
+            if(file_exists(public_path().'/images/'.$sponsor->logo_path)){
+                unlink(public_path().'/images/'.$sponsor->logo_path);
+            }
             $sponsor->logo_path = $logo_name;
         }
         $sponsor->name = $request->name;
@@ -115,8 +119,12 @@ class AdminSponsorsController extends Controller
      */
     public function destroy($id)
     {
-        //
-        Sponsor::findOrFail($id)->delete();
+        $sponsor = Sponsor::findOrFail($id);
+        //deleting old file
+        if(file_exists(public_path().'/images/'.$sponsor->logo_path)){
+            unlink(public_path().'/images/'.$sponsor->logo_path);
+        }
+        $sponsor->delete();
         return back();
     }
 }

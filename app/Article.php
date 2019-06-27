@@ -22,7 +22,4 @@ class Article extends Model
     public function photos(){
         return $this->hasMany('App\Photo');
     }
-    public function magazine(){
-        return $this->belongsTo('App\Magazine');
-    }
 }

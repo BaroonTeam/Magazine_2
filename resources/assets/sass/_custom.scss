@@ -18,7 +18,21 @@ body, html{
     background-color: lightgrey;
 }
 .article-img{
-    box-shadow: 2px 2px 5px #444;
     height: 550px;
-    min-width: 100%;
+    min-width: 90%;
+}
+
+.navbar-list-item{
+    margin: 0 auto;
+    
+    padding: 0;
+}
+
+.news-img-slide{
+    height: 200px;
+    width: 325px;
+}
+.small-news-images{
+    height: 150px !important;
+    width: 220px !important; 
 }

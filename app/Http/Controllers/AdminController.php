@@ -15,8 +15,7 @@ class AdminController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('Admin');
-        $this->middleware('auth');
+        $this->middleware('Admin')->except(['showAdminLogin']);
     }
     public function index(){
         $channels = Channel::all();
@@ -27,5 +26,8 @@ class AdminController extends Controller
         $articles = Article::where('id','>','0')->orderBy('created_at', 'desc')->get();
 
         return view('admin.index', compact('channels', 'users', 'magazines', 'articles', 'comments','sponsors'));
+    }
+    public function showAdminLogin(){
+        return view('admin.auth.login');
     }
 }

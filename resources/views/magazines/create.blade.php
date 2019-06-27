@@ -5,7 +5,7 @@
 <div class="py-5">
     <div class="container">
         <h1 class="display-4">اضف إصدار</h1>
-        <form action="{{route('magazines.store', ['channel_id'=> $channel_id])}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('magazines.store')}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
 
             <div class="form-group mb-3">
@@ -33,7 +33,6 @@
                 <label for="date">تاريخ الاصدار</label>
                 <input type="date" value="{{date("Y-m-d")}}" name="created_at" class="form-control">
             </div>
-            <input type="hidden" name="channel_id" value="{{$channel_id}}">
             <input type="submit" class="btn btn-primary" value="اضافة">
         </form>
     </div>

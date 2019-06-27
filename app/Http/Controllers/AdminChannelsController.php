@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Channel;
+use App\Http\Requests\ChannelCreateRequest;
 
 class AdminChannelsController extends Controller
 {
@@ -21,7 +22,7 @@ class AdminChannelsController extends Controller
     {
         //
         $channels = Channel::all();
-        return view('admin.channels.index')->with('channels', $channels);
+        // return view('admin.channels.index')->with('channels', $channels);
     }
 
     /**
@@ -32,6 +33,7 @@ class AdminChannelsController extends Controller
     public function create()
     {
         //
+        // return view('admin.channels.create');
     }
 
     /**
@@ -40,9 +42,16 @@ class AdminChannelsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ChannelCreateRequest $request)
     {
         //
+        $channel = new Channel;
+        $channel->channel_name = $request->channel_name;
+        $channel->cover_path = $request->cover_path;
+        $channel->user_id = auth()->user()->id;
+        $channel->is_active = 1;
+        $channel->save();
+        return redirect('/admin/channels')->with('success', 'تم اضافة المجلة بنجاح');
     }
 
     /**
@@ -65,6 +74,8 @@ class AdminChannelsController extends Controller
     public function edit($id)
     {
         //
+        $channel = Channel::findOrFail($id);
+        return view('admin.channels.edit', compact('channel'));
     }
 
     /**
@@ -77,6 +88,24 @@ class AdminChannelsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        //
+        $channel = Channel::findOrFail($id);
+        if($request->has('cover_path')){
+            //Asigning the uploaded image to a variable
+            $file = $request->cover_path;
+            //Asigining the image a new name
+            $cover_name = time() . $file->getClientOriginalName();
+            //Moving image to images folder and saving in database
+            $file->move('images', $cover_name);
+            $channel->cover_path = $cover_name;
+        }
+        $channel->channel_name = $request->channel_name;
+        $channel->save();
+        return redirect('/admin/channels')->with('success', 'تم تعديل المجلة بنجاح');
+
+    }
+
+    public function activation(Request $request, $id){
         $channel = Channel::findOrFail($id);
         //Check its status and reverse it
         $channel->is_active == 0 ? $channel->is_active = 1 : $channel->is_active = 0;

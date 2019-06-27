@@ -15,7 +15,7 @@
                     <th>اسم الكاتب</th>
                     <th>البريد الالكتروني</th>
                     <th>تاريخ التسجيل</th>
-                    <th>مشرف\مستخدم</th>
+                    <th>مشرف\كاتب</th>
                     <th>مسح</th>
 
                 </tr>
@@ -32,7 +32,7 @@
                                 {{csrf_field()}}
                                 <input type="hidden" name="_method" value="PUT">
                                 <button type="submit" class="btn btn-secondary">
-                                    <i class="far fa-edit"></i> {{$user->is_admin == 0 ? 'مستخدم' : 'مشرف'}} 
+                                    <i class="far fa-edit"></i> {{$user->is_admin == 0 ? 'كاتب' : 'مشرف'}} 
                                 </button>
                             </form>
                             

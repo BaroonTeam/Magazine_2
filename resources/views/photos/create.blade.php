@@ -26,7 +26,7 @@
                 
                 
                         <input type="submit" value="اضف الصور" class="btn btn-primary">
-                        <a href="{{route('articles.index', ['magazine_id'=>0])}}" class="btn btn-dark float-left">التالي</a>
+                        <a href="{{route('home')}}" class="btn btn-dark float-left">التالي</a>
                         
                     </form>
                 </div>

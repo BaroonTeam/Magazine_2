@@ -4,136 +4,274 @@
 <?php use Arabic\Arabic; ?>
 <div class="container py-4">
     <div class="row">
-        <div class="col">
-        <h1 class="display-4">{{$article->article_title}}</h1>
-        <span class="badge badge-danger mb-3"> الكاتب {{$article->user_id == 0 ? 'مجهول' : $article->user->first_name . ' ' . $article->user->last_name}} {{$article->created_at->day}}/{{$article->created_at->month}}/{{$article->created_at->year}}</span><br>
-            <img src="/images/{{$article->article_cover}}" alt="" class="img-fluid text-center article-img">
-            @if (count($article->photos) > 0)
+   
+        <div class="col-md-8">
+                <img src="/images/{{$article->article_cover}}" alt="" class="img-fluid text-center article-img">
+           <h1 class="display-4">{{$article->article_title}}</h1>
+       {{-- <h4> بواسطة: <span style="color:red"> {{$article->user_id == 0 ? 'مجهول' : $article->user->first_name . ' ' . $article->user->last_name}} </span> -- {{$article->created_at->month}} {{$article->created_at->day}},{{$article->created_at->year}}<br> --}}
+        <div class="date">
+                <ul>
+                    <li><h6>بواسطة<span style="color:red;"> {{$article->user_id == 0 ? 'مجهول' : $article->user->first_name . ' ' . $article->user->last_name}}</span>--</h6></li>
+                    <li><h6>{{$article->created_at->day}}/{{$article->created_at->month}}/{{$article->created_at->year}} --</h6></li>
+                    <li><h6><span style="color:red;">{{count($comments)}} تعليقات</span></h6></li>
+                </ul>
+            </div>
+
+
+
+        @if (count($article->photos) > 0)
                 <div class="row mt-3">
-                    @foreach ($article->photos as $photo)
-                        <div class="col-lg-1 col-md-2 col-sm-3"><img height="75" width="75" src="/images/{{$photo->path}}" class="my-2" alt=""></div>
-                    @endforeach
+                 
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                               
+                                <div class="carousel-inner">
+                                        @foreach ($article->photos as $index => $photo)
+                                        @if($index==1)
+                                  <div class="carousel-item active">
+                                    <img height="327" width="197" class="d-block w-100" src="/images/{{$photo->path}}" alt="First slide">
+                                  </div>
+                                  @else 
+                                  <div class="carousel-item ">
+                                        <img height="327" width="197" class="d-block w-100" src="/images/{{$photo->path}}" alt="First slide">
+                                      </div>
+                                      @endif
+                                  @endforeach
+                                    </div>
+                                   
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                  <span class="sr-only">Next</span>
+                                </a>
+                              </div>
+                  
                 </div>
             @endif
-            <p class="lead">{{$article->article_content}}</p>
+
+            <br><br>
+            <p class="col-md-12" style="white-space:pre-line; ">{{ $article->article_content}}</p>
         </div>
+        
+        <div class="col-sm-4 right-padding">
+                <aside>
+        <h2 class="category-headding ">الرعاة</h2>
+        <div class="headding-border"></div>
+    @if (count($sponsors) > 0)
+    @foreach ($sponsors as $sponsor)
+    <div class="item sponsor-item mb-1">
+        <div class="post-wrapper wow fadeIn" data-wow-duration="1s"><!-- image -->
+            <div class="post-thumb">
+                <img class="img-responsive" src="/images/{{$sponsor->logo_path}}" alt="">
+            </div>
+        </div>
+    </div>
+        
+    @endforeach
+    @endif
+                </aside>
+</div>
+
     </div>
 
 
 
     {{-- ADD Comment Section --}}
-    <div class="row mt-8">
-        <div class="col">
-            <div class="media d-flex">
-                <div class="media-img ml-3 align-self-center">
-                    <img src="/images/user.png" alt="">
-                </div> 
-                <div class="media-body align-center-end ">
-                    <form method="POST" action="/articles/{{$article->id}}/comments">
-                        {{ csrf_field() }}
+    <div class="row">
+        <div class="col-md-8">
+    <div class="form-area">
+            <h3 class="category-headding ">ترك تعليق</h3>
+            <div class="headding-border"></div>
+            <form method="POST" action="/articles/{{$article->id}}/comments">
+                {{ csrf_field() }}
+                <div class="row">
                         @if(Auth::check())
-                            <label class="align-center">{{Auth::user()->first_name }} {{Auth::user()->last_name }} </label>
-                            <input type="hidden" name="username" value="{{Auth::user()->first_name }} {{Auth::user()->last_name }}">
-                        @else
-                        <div class="form-group">
-                            <input type="text" name="username" placeholder="ادخل اسم المستخدم" class="form-control form-control-sm" style="height: 46px; width: 410px;" required>
+                        <div class="col-sm-6">
+                            <span class="input">
+                                <input class="input_field" name="username" type="hidden" value="{{Auth::user()->first_name }} {{Auth::user()->last_name }}" id="input-1">
+                                <label class="align-center input_label" for="input-1">{{Auth::user()->first_name }} {{Auth::user()->last_name }} </label>
+                                   <span class="input_label_content" data-content="اسمك"></span>
+                                </label>
+                            </span>
                         </div>
-                        @endif
-                        <div class="form-group">
-                            <textarea name="comment_content" placeholder="ادخل تعليقك " required="required" class="form-control" style="height: 129px; width: 412px; margin-top: 0px; margin-bottom: 0px;"></textarea>
-                        </div>  
-                            <input type="submit" value="اضف التعليق" class="btn btn-primary">
-                    </form>
-                </div>
-            
-            </div>
-        </div>
-    </div>
-
-  
-
-    {{-- Fetch the Comment --}}
-    <div class="row mt-5">
-        <div class="col">
-                <ul >
-            @foreach($comments as $comment)
-       
-             <li >
-               <div class="media ml-3 d-flex">
-              
-                <div class="media-img ml-3">
-                    <img src="/images/user.png "  style="height:50px; width:50px;" alt="">
-                </div>
-                <div class="media-body align-center-end ">
+                        <div class="col-sm-6">
+                                <span class="input">
+                                        <input class="input_field" name="email" type="hidden" value="{{Auth::user()->email }} " id="input-1">
+                                        <label class="align-center input_label" for="input-2">{{Auth::user()->email }} </label>
+                                    <span class="input_label_content" data-content="بريدك الالكتروني"> </span>
+                                    </label>
+                                </span>
+                            </div>
+                            <br><br><br>
+                    @else
+                    <div class="col-sm-6">
+                        <span class="input">
+                            <input class="input_field" name="username" type="text" id="input-1">
+                            <label class="input_label" for="input-1">
+                                <span class="input_label_content" data-content="اسمك">اسمك</span>
+                            </label>
+                        </span>
+                    </div>
                   
-                      {{  $comment->username }} -
-                   {{'منذ '.Arabic::since($comment->created_at->diffforHumans() )}}
-                    <br>
-                    {{  $comment->comment_content }} 
-                    <a class="btn btn-primary btn-circle" data-toggle="collapse" href="#replyOne{{$comment->id}}" style="width:40px; height:30px; text-align:center;"><span class="glyphicon glyphicon-comment"></span>رد</a>
-                   
-                   
-                   {{-- FETCH REPLY  --}}
-                   @foreach ($comment->replies as $reply)
-                   @if(count($comment->replies)>0)
-                    <div class="media ml-3 d-flex">
-              
-                            <div class="media-img ml-3">
-                                <img src="/images/user.png "  style="height:50px; width:50px;" alt="">
-                            </div>
-                            <div class="media-body align-center-end ">
-                             
-                                    {{  $reply->username }} -
-                                    {{'منذ '.Arabic::since($reply->created_at->diffforHumans() )}}
-                                     <br>
-                                     {{  $reply->reply_content }} 
-                               
-                            </div>
-                        </div>
-                        <br>
-                        @endif
-                        @endforeach
-                    {{-- ADD REPLY  --}}
-                    <div class="collapse" id="replyOne{{$comment->id}}">
-                        <br>
-                            <div class="row mt-8">
-                                    <div class="col">
-                                        <div class="media d-flex">
-                                            <div class="media-img ml-3 align-self-center">
-                                                <img src="/images/user.png" alt="">
-                                            </div> 
-                                            <div class="media-body align-center-end ">
-                                                <form method="POST" action="/comments/{{$comment->id}}/replies">
-                                                    {{ csrf_field() }}
-                                                    @if(Auth::check())
-                                                        <label class="align-center">{{Auth::user()->first_name }} {{Auth::user()->last_name }} </label>
-                                                        <input type="hidden" name="username" value="{{Auth::user()->first_name }} {{Auth::user()->last_name }}">
-                                                    @else
-                                                    <div class="form-group">
-                                                        <input type="text" name="username" placeholder="ادخل اسم المستخدم" class="form-control form-control-sm" style="height: 46px; width: 410px;" required>
-                                                    </div>
-                                                    @endif
-                                                    <div class="form-group">
-                                                        <textarea name="reply_content" placeholder="ادخل ردك " required="required" class="form-control" style="height: 70px; width: 412px;"></textarea>
-                                                    </div>  
-                                                        <input type="submit" value="اضف الرد" class="btn btn-primary">
-                                                </form>
-                                            </div>
-                                        
-                                        </div>
-                                    </div>
-                                </div>  
-                        </div>
-
-                        {{-- END OF ADD REPLY --}}
+                    <div class="col-sm-6">
+                        <span class="input">
+                            <input class="input_field" name="email" type="text" id="input-2">
+                            <label class="input_label" for="input-2">
+                                <span class="input_label_content" data-content="بريدك الالكتروني">بريدك الالكتروني</span>
+                            </label>
+                        </span>
+                    </div>
+                    @endif
+                    <div class="col-sm-12">
+                        <span class="input">
+                            <textarea class="input_field" name="comment_content" id="message"></textarea>
+                            <label class="input_label" for="message">
+                                <span class="input_label_content" data-content="رسالتك">رسالتك</span>
+                            </label>
+                        </span>
+                        <input type="submit" class="btn btn-style" value="أضف تعليق">
+                    </div>
                 </div>
-              </div>
-            </li>
-             @endforeach  
-         </ul>
+            </form>
         </div>
-    
+  
     </div>
+</div>
+
+
+
+     {{-- FETCH COMMENT --}}
+    <div class="row">
+            <div class="col-md-8">
+    <div class="comments-container">
+        <h3>التعليق </h3>
+        <div class="headding-border"></div>
+        @foreach($comments as $comment)
+        <ul id="comments-list" class="comments-list">
+            <li>
+                <div class="comment-main-level">
+                    <!-- Avatar -->
+                    <div class="comment-avatar"><img src="/images/user.png "style="border-radius: 50%;" alt=""></div>
+                    <!-- Contenedor del Comentario -->
+                    <div class="comment-box">
+                        <div class="comment-head">
+                           
+                            <h6 class="comment-name"> {{  $comment->username }}</h6>
+                         
+                         
+                            <span>   {{'منذ '.Arabic::since($comment->created_at->diffforHumans() )}}</span>
+                            <div class="accordion" id="accordionExample">
+                            <i >
+                                    <button class="btn btn-link fa fa-reply collapsed" type="button" data-toggle="collapse" data-target="#collapseOne{{$comment->id}}" aria-expanded="false" aria-controls="collapseOne">
+                                            
+                                          </button>
+                                </i>
+                            
+                            </div>
+                        </div>
+                        <div class="comment-content">
+                                {{  $comment->comment_content }} 
+                        </div>
+                    </div>
+                </div>
+
+
+   
+
+                       {{-- ADD REPLY  --}}
+                        <div id="collapseOne{{$comment->id}}" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                        <div class="row"  style="margin-right:50px; ">
+                                                <div class="col-md-8">
+                                            <div class="form-area">
+                                                    <h3 class="category-headding ">ترك رد</h3>
+                                                    <div class="headding-border"></div>
+                                                    <form method="POST" action="/comments/{{$comment->id}}/replies">
+                                                        {{ csrf_field() }}
+                                                        <div class="row">
+                                                                @if(Auth::check())
+                                                                <div class="col-sm-6">
+                                                                    <span class="input">
+                                                                        <input class="input_field" name="username" type="hidden" value="{{Auth::user()->first_name }} {{Auth::user()->last_name }}" id="input-1">
+                                                                        <label class="align-center input_label" for="input-1">{{Auth::user()->first_name }} {{Auth::user()->last_name }} </label>
+                                                                           <span class="input_label_content" data-content="اسمك"></span>
+                                                                        </label>
+                                                                    </span>
+                                                                </div>
+                                                           
+                                                                    <br><br><br>
+                                                            @else
+                                                            <div class="col-sm-6">
+                                                                <span class="input">
+                                                                    <input class="input_field" name="username" type="text" id="input-1">
+                                                                    <label class="input_label" for="input-1">
+                                                                        <span class="input_label_content" data-content="اسمك">اسمك</span>
+                                                                    </label>
+                                                                </span>
+                                                            </div>
+                                                          
+                                                      
+                                                            @endif
+                                                            <div class="col-sm-12">
+                                                                <span class="input">
+                                                                    <textarea class="input_field" name="reply_content" id="message"></textarea>
+                                                                    <label class="input_label" for="message">
+                                                                        <span class="input_label_content" data-content="رسالتك">رسالتك</span>
+                                                                    </label>
+                                                                </span>
+                                                                <input type="submit" class="btn btn-style" value="أضف الرد">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                          
+                                            </div>
+                                        </div> 
+                                     </div>
+                              </div>
+                            {{-- END OF ADD REPLY --}}
+
+        
+
+
+                <!--FETCH REPLY -->
+             
+                        @foreach ($comment->replies as $reply)
+                        @if(count($comment->replies)>0 && $reply->is_active == 1)
+                        <ul class="comments-list reply-list">
+                    <li>
+                        <!-- Avatar -->
+                        <div class="comment-avatar"><img src="/images/user.png " style="border-radius:50%;" alt=""></div>
+                        <!-- Contenedor del Comentario -->
+                        <div class="comment-box">
+                            <div class="comment-head">
+                             
+                                <h6 class="comment-name"><a href="#"> {{  $reply->username }}</a></h6>
+                              
+                                <span>{{'منذ '.Arabic::since($reply->created_at->diffforHumans() )}}</span>
+                              
+                            </div>
+                            <div class="comment-content">
+                                    {{  $reply->reply_content }} 
+
+                            </div>
+                        </div>
+                    </li>
+         
+           
+                </ul>
+                @endif
+                @endforeach
+            </li>
+  
+        </ul>
+        @endforeach
+    </div>
+            </div>
+    </div>
+
 
 </div>
     

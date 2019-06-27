@@ -27,7 +27,7 @@ class CreateArticleRequest extends FormRequest
             //
             'article_title'=>'required',
             'article_content'=>'required',
-            'article_cover'=>'required|mimes:png,jpg,jpeg,pdf|max:10000',
+            'article_cover'=>'required|mimes:png,jpg,jpeg,pdf|max:100000',
             'category_id'=>'required'
         ];
     }

@@ -21615,7 +21615,7 @@ yx-axis
   margin: 0;
   padding: 0;
   font-size: 80%;
-  color: #f60d2b;
+  color: #00746b;
   font-weight: 800;
 }
 
@@ -21627,7 +21627,7 @@ yx-axis
 .RYPP .RYPP-playlist ol li.selected {
   background-color: #3a3a3a;
   cursor: pointer;
-  border-right: 4px solid #f60d2b;
+  border-right: 4px solid #00746b;
 }
 
 .RYPP .RYPP-playlist ol li.selected > p {
@@ -27791,24 +27791,24 @@ This file contains the common info of this theme.
 /*------------------------------------------------------------------
 # [Color codes]
 # Grey (text): #7E7E7E
-# Red (button) #f60d2b
+# Red (button) #00746b
 # */
 
 /*** 1. General Styling & Typography
 -------------------------------------------*/
 
 ::-webkit-selection {
-  background-color: #f60d2b;
+  background-color: #00746b;
   color: #ffffff;
 }
 
 ::-moz-selection {
-  background-color: #f60d2b;
+  background-color: #00746b;
   color: #ffffff;
 }
 
 ::selection {
-  background-color: #f60d2b;
+  background-color: #00746b;
   color: #ffffff;
 }
 
@@ -27826,7 +27826,7 @@ btn,
 }
 
 a:hover {
-  color: #f60d2b;
+  color: #00746b;
   text-decoration: none;
 }
 
@@ -27889,7 +27889,7 @@ li {
 }
 
 .color-1 {
-  color: #f60d2b !important;
+  color: #00746b !important;
 }
 
 .color-2 {
@@ -27913,7 +27913,7 @@ li {
 }
 
 .bg-color-1 {
-  background-color: #f60d2b !important;
+  background-color: #00746b !important;
 }
 
 .bg-color-2 {
@@ -28040,7 +28040,7 @@ if it's not present, don't show loader */
 .headding-border {
   position: relative;
   border-bottom: 1px solid #ddd;
-  background-color: #f60d2b;
+  background-color: #00746b;
   margin-bottom: 30px;
 }
 
@@ -28068,8 +28068,8 @@ if it's not present, don't show loader */
 
 .btn-style {
   color: #FFF;
-  background-color: #f60d2b;
-  border: 2px solid #f60d2b;
+  background-color: #00746b;
+  border: 2px solid #00746b;
   border-radius: 30px;
   font-weight: 700;
   padding: 8px 25px;
@@ -28079,9 +28079,9 @@ if it's not present, don't show loader */
 }
 
 .btn-style:hover {
-  border: 2px solid #f60d2b;
+  border: 2px solid #00746b;
   background-color: transparent;
-  color: #f60d2b;
+  color: #00746b;
 }
 
 .slide .post-badge {
@@ -28266,7 +28266,7 @@ header {
 }
 
 .top-header-menu li a:hover {
-  color: #f60d2b;
+  color: #00746b;
 }
 
 .td-header-top-menu a {
@@ -28282,7 +28282,7 @@ header {
   padding: 30px;
   border-width: 1px 0 0;
   border-radius: 0;
-  border-color: #f60d2b;
+  border-color: #00746b;
   margin: 0;
 }
 
@@ -28311,20 +28311,20 @@ header {
 }
 
 .btn-lr:hover {
-  background-color: #f60d2b;
+  background-color: #00746b;
   color: #fff;
-  border-color: #f60d2b;
+  border-color: #00746b;
 }
 
 .btn-active {
-  background-color: #f60d2b;
+  background-color: #00746b;
   color: #fff;
-  border-color: #f60d2b;
+  border-color: #00746b;
 }
 
 .top-header-menu li .foeget a,
 .foeget a {
-  color: #f60d2b;
+  color: #00746b;
   font-size: 14px;
   font-weight: 500;
 }
@@ -28424,7 +28424,7 @@ header {
 }
 
 .top_header_icon_wrap a:hover {
-  color: #f60d2b;
+  color: #00746b;
 }
 
 .top_header_icon_wrap a:nth-child(6) {
@@ -28474,8 +28474,8 @@ header {
 }
 
 .newsticker-inner a i:hover {
-  background-color: #f60d2b;
-  border-color: #f60d2b;
+  background-color: #00746b;
+  border-color: #00746b;
   color: #fff;
 }
 
@@ -28527,8 +28527,8 @@ header {
 .nav .open > a,
 .nav .open > a:focus,
 .nav .open > a:hover {
-  background-color: #f60d2b;
-  border-color: #f60d2b;
+  background-color: #00746b;
+  border-color: #00746b;
   color: #fff;
 }
 
@@ -28547,7 +28547,7 @@ header {
   min-width: 170px;
   border: 0;
   padding: 0;
-  border-top: 1px solid #f60d2b;
+  border-top: 1px solid #00746b;
 }
 
 .dropdown-menu > li > a {
@@ -28555,7 +28555,7 @@ header {
 }
 
 .dropdown-menu > li > a:hover {
-  background-color: #f60d2b;
+  background-color: #00746b;
   color: #fff;
 }
 
@@ -28584,7 +28584,7 @@ header {
   border-radius: 0;
   border: 0;
   padding: 0;
-  border-top: 1px solid #f60d2b;
+  border-top: 1px solid #00746b;
 }
 
 .dropdown-submenu:hover .zoomIn {
@@ -28648,7 +28648,7 @@ header {
 .navbar-nav > li > a:focus,
 .navbar-nav > li > a:hover {
   color: #fff;
-  background-color: #f60d2b;
+  background-color: #00746b;
   border-bottom: 1px solid transparent;
 }
 
@@ -28706,8 +28706,8 @@ header {
 
 .mobile-menu-btn {
   color: #fff;
-  background-color: #f60d2b;
-  border-color: #f60d2b;
+  background-color: #00746b;
+  border-color: #00746b;
   border-radius: 25px;
 }
 
@@ -28720,7 +28720,7 @@ header {
 .sidebar-nav ul li a:hover {
   text-decoration: none;
   background-color: transparent;
-  color: #f60d2b;
+  color: #00746b;
 }
 
 .sidebar-nav .arrow {
@@ -29030,9 +29030,9 @@ header {
 }
 
 .owl-nav div:hover {
-  background-color: #f60d2b;
+  background-color: #00746b;
   color: #fff;
-  border: 1px solid #f60d2b;
+  border: 1px solid #00746b;
 }
 
 .post-wrapper h3,
@@ -29134,13 +29134,13 @@ header {
 }
 
 .search-area .form-control:focus {
-  border-color: #f60d2b;
+  border-color: #00746b;
 }
 
 .search-area .btn-search {
   color: #fff;
-  background-color: #f60d2b;
-  border-color: #f60d2b;
+  background-color: #00746b;
+  border-color: #00746b;
   padding: 9px 12px;
   border-radius: 0px !important;
 }
@@ -29251,7 +29251,7 @@ header {
 
 .current a {
   position: relative;
-  border-bottom: 1px solid #f60d2b;
+  border-bottom: 1px solid #00746b;
   color: #111;
 }
 
@@ -29314,7 +29314,7 @@ header {
 }
 
 .box-item:hover .td-module-title a {
-  color: #f60d2b;
+  color: #00746b;
 }
 
 /*** Weekly News & Headding News
@@ -29404,7 +29404,7 @@ header {
 
 .weekly-news-inner .post-editor-date .post-author-comment i,
 .weekly-news-inner .post-editor-date .post-date i {
-  color: #f60d2b;
+  color: #00746b;
 }
 
 .readmore i {
@@ -29418,7 +29418,7 @@ header {
   -webkit-transition: all 300ms;
   transition: all 300ms;
   background-repeat: repeat-x;
-  background: #f60d2b;
+  background: #00746b;
   font-size: 30px;
 }
 
@@ -29479,7 +29479,7 @@ header {
   -webkit-appearance: none;
   width: 12px;
   height: 12px;
-  border: 1px solid #f60d2b;
+  border: 1px solid #00746b;
   border-radius: 50%;
   outline: none;
 }
@@ -29499,7 +29499,7 @@ header {
 }
 
 input[type='radio']:checked:before {
-  background: #f60d2b;
+  background: #00746b;
 }
 
 /*** Social Media
@@ -29648,10 +29648,10 @@ input[type='radio']:checked:before {
   width: 100%;
   height: 64px;
   padding: 16px 0 0 8px;
-  background: #f60d2b;
-  border-left: 8px solid #f60d2b;
-  border-right: 8px solid #f60d2b;
-  border-bottom: 1px solid #f60d2b;
+  background: #00746b;
+  border-left: 8px solid #00746b;
+  border-right: 8px solid #00746b;
+  border-bottom: 1px solid #00746b;
   z-index: 2;
 }
 
@@ -29674,7 +29674,7 @@ input[type='radio']:checked:before {
 }
 
 .video-post-inner h3 a:hover {
-  color: #f60d2b;
+  color: #00746b;
 }
 
 /*** Article news
@@ -29813,7 +29813,7 @@ footer hr {
 
 .tag:hover {
   color: #fff;
-  background-color: #f60d2b;
+  background-color: #00746b;
 }
 
 .newsletter-inner {
@@ -29865,7 +29865,7 @@ footer table tbody tr td {
 }
 
 footer table tbody tr td i {
-  color: #f60d2b;
+  color: #00746b;
 }
 
 footer table tbody tr td a {
@@ -29977,8 +29977,8 @@ footer ul li a:hover {
 
 #toTop.btn-info {
   color: #FFF;
-  background-color: #f60d2b;
-  border-color: #f60d2b;
+  background-color: #00746b;
+  border-color: #00746b;
   padding: 10px 8px;
   border-radius: 25px;
   border-radius: 25px;
@@ -30085,7 +30085,7 @@ footer ul li a:hover {
 }
 
 .date ul li a span {
-  color: #f60d2b;
+  color: #00746b;
   font-weight: 600;
   margin-right: 5px;
 }
@@ -30158,9 +30158,9 @@ ol {
 }
 
 .tags ul li a:hover {
-  background-color: #f60d2b;
+  background-color: #00746b;
   color: #fff;
-  border-color: #f60d2b;
+  border-color: #00746b;
 }
 
 .related-news-inner .rn_block {
@@ -30272,7 +30272,7 @@ textarea.input_field {
   left: 0;
   height: 100%;
   width: 100%;
-  color: #f60d2b;
+  color: #00746b;
   padding: 0.25em 0;
   letter-spacing: 1px;
   font-size: 13px;
@@ -30293,7 +30293,7 @@ textarea.input_field {
 .input_field:focus + .input_field,
 .input--filled .input_field {
   background-color: transparent;
-  border-color: #f60d2b;
+  border-color: #00746b;
 }
 
 /*comment box*/
@@ -30537,7 +30537,7 @@ textarea.input_field {
   height: 45px;
   width: 45px;
   border-radius: 50%;
-  background: #f60d2b;
+  background: #00746b;
 }
 
 .qtcontent blockquote::before {
@@ -30555,7 +30555,7 @@ textarea.input_field {
 }
 
 .qtcontent blockquote a {
-  color: #f60d2b;
+  color: #00746b;
 }
 
 /*details 02*/
@@ -30612,7 +30612,7 @@ textarea.input_field {
 }
 
 .breadcrumbs ul li i {
-  color: #f60d2b;
+  color: #00746b;
   font-weight: 600;
 }
 
@@ -30635,7 +30635,7 @@ textarea.input_field {
 }
 
 .breadcrumbs ul li a:hover {
-  color: #f60d2b;
+  color: #00746b;
 }
 
 .breadcrumbs ul li:last-child a::after {
@@ -30752,7 +30752,7 @@ textarea.input_field {
 #widget-slider.owl-theme .owl-dots span:hover {
   filter: Alpha(Opacity=100);
   opacity: 1;
-  background: #f60d2b;
+  background: #00746b;
 }
 
 #news-feed-carousel.owl-theme .owl-dots .active span,
@@ -30810,8 +30810,8 @@ textarea.input_field {
 
 .pagination a.active,
 .pagination a:active {
-  background-color: #f60d2b;
-  border-color: #f60d2b;
+  background-color: #00746b;
+  border-color: #00746b;
   color: #fff;
 }
 
@@ -30820,8 +30820,8 @@ textarea.input_field {
 .pagination > li > span:focus,
 .pagination > li > span:hover {
   color: #fff;
-  background-color: #f60d2b;
-  border-color: #f60d2b;
+  background-color: #00746b;
+  border-color: #00746b;
 }
 
 /*category css 02*/
@@ -30993,15 +30993,15 @@ textarea.input_field {
 /*post 6 color*/
 
 .archive-post-6:hover {
-  border: 1px solid #f60d2b;
+  border: 1px solid #00746b;
 }
 
 .archive-post-6 .box-item:hover .td-module-title a {
-  color: #f60d2b  !important;
+  color: #00746b  !important;
 }
 
 .archive-post-6:hover hr {
-  border-color: #f60d2b;
+  border-color: #00746b;
 }
 
 /*page two*/
@@ -31047,7 +31047,7 @@ textarea.input_field {
 
 .comments a {
   color: #FFF !important;
-  background-color: #f60d2b;
+  background-color: #00746b;
   min-width: 17px;
   padding: 3px 4px 4px 5px;
   position: relative;
@@ -31161,7 +31161,7 @@ textarea.input_field {
 }
 
 .login-reg-inner .form-control:focus {
-  border-color: #f60d2b;
+  border-color: #00746b;
 }
 
 .login-reg-inner label {
@@ -31172,7 +31172,7 @@ textarea.input_field {
 }
 
 .login-reg-inner label sup {
-  color: #f60d2b;
+  color: #00746b;
 }
 
 .register-form-inner .btn-style {
@@ -31641,10 +31641,23 @@ html {
 }
 
 .article-img {
-  -webkit-box-shadow: 2px 2px 5px #444;
-          box-shadow: 2px 2px 5px #444;
   height: 550px;
-  min-width: 100%;
+  min-width: 90%;
+}
+
+.navbar-list-item {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.news-img-slide {
+  height: 200px;
+  width: 325px;
+}
+
+.small-news-images {
+  height: 150px !important;
+  width: 220px !important;
 }
 
 .navbar-laravel {

@@ -36843,7 +36843,7 @@ module.exports = function spread(callback) {
 /***/ (function(module, exports) {
 
 $('.carousel').carousel({
-    interval: 1500,
+    interval: 4000,
     keyboard: true
 });
 

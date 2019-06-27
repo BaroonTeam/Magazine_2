@@ -16,10 +16,15 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->isAdmin()){
-            return $next($request);
+        if(Auth::check()){
+            if(Auth::user()->isAdmin()){
+                return $next($request);
+            }
+            return redirect('/');
+        }else{
+            return redirect('/admin/login');
         }
-        return redirect('/')->with('error', 'Your are not allowed in this area');
+        return $next($request);
 
     }
 }

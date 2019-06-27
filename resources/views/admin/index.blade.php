@@ -22,6 +22,7 @@
                   <th>القسم</th>
                   <th>التاريخ</th>
                   <th>تفعيل/ايقاف</th>
+                  <th>تعديل و تعين اصدار</th>
                   <th>مسح</th>
                 </tr>
               </thead>
@@ -34,19 +35,20 @@
                   <td>القسم</td>
                   <td>{{$article->created_at->day}}/{{$article->created_at->month}}/{{$article->created_at->year}}</td>
                   <td>
-
-                           
-                      <form action="{{route('admin.articles.update', ['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}" method="POST">
-                          {{csrf_field()}}
-                          <input type="hidden" name="_method" value="PUT">
-                          <button type="submit" class="btn btn-secondary">
-                              <i class="far fa-edit"></i> {{$article->is_active == 0 ? 'تفعيل' : 'إقاف'}} 
-                          </button>
+                    
+                    <form action="{{route('admin.articles.activation', ['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}" method="POST">
+                        {{csrf_field()}}
+                        <input type="hidden" name="_method" value="PUT">
+                        <button type="submit" class="btn btn-warning">
+                          <i class="far fa-edit"></i> {{$article->is_active == 0 ? 'تفعيل' : 'إقاف'}} 
+                        </button>
                       </form>
                       
-                  </td>
+                    </td>
+                    <td><a href="{{route('admin.articles.edit', ['article'=>$article->id])}}" class="btn btn-secondary">تعديل و تعين اصدار</a></td>
+                 
                   <td>     
-                      <form action="{{'admin.articles.delete', ['article'=>$article->id]}}" method="POST">
+                      <form action="{{route('admin.articles.destroy', ['article'=>$article->id])}}" method="POST">
                           {{csrf_field()}}
                           <input type="hidden" name="_method" value="DELETE">
                           <button type="submit" class="btn btn-danger">
@@ -63,15 +65,6 @@
           </div>
         </div>
         <div class="col-md-3">
-          <div class="card text-center bg-primary text-white mb-3">
-            <div class="card-body">
-              <h3>عدد المجلات</h3>
-              <h5>
-                <i class="fas fa-pencil-alt"></i> {{$channels->count()}}
-              </h4>
-              <a href="{{route('admin.channels.index')}}" class="btn btn-outline-light btn-sm">عرض</a>
-            </div>
-          </div>
 
           <div class="card text-center bg-success text-white mb-3">
             <div class="card-body">

@@ -18,6 +18,6 @@
       <body>
 
 
-      <div class="flip-book-container solid-container" src="/pdfs/{{$magazine->pdf_path}}">
+      <div class="flip-book-container solid-container" src="/images/pdfs/{{$magazine->pdf_path}}">
 
 </div>

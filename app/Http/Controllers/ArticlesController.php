@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Magazine;
 use App\Category;
 use App\Comment;
+use App\Sponsor;
 
 class ArticlesController extends Controller
 {
@@ -77,6 +78,9 @@ class ArticlesController extends Controller
             {
                 $article->user_id = 0;
             }
+        if($request->magazine_id == 0){
+            $article->is_active = 0;
+        }
         //Assign the rest of information
         $article->article_title = $request->article_title;
         $article->article_content = $request->article_content;
@@ -102,22 +106,13 @@ class ArticlesController extends Controller
         $comments = $article->comments()->where('is_active',1)->orderBy('created_at', 'desc')->get();
         $article->views > 0 ? $article->views++ : $article->views = 1;
         $article->save();
+        $sponsors = Sponsor::where('created_at', '>', date('Y-m-d',time() - 60*60*24*365))->orderBy('ordering', 'desc')->get();
+
         
         if($article->is_active != 1){
             return redirect('/');
         }
-        return view('articles.show', compact('article', 'comments'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return view('articles.show', compact('article', 'comments','sponsors'));
     }
 
     public function show_archives($year, $month)
@@ -132,6 +127,18 @@ class ArticlesController extends Controller
         return view('archives.index',compact('archives'));
 
 
+    }
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
